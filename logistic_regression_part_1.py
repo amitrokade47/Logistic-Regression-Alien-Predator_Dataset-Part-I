@@ -120,8 +120,11 @@ def forward_and_back_propogation(w, x, y, b):
     A = sigmoid(np.dot(w.transpose(), x) + b)
 
     epsilon = 1e-5
+    '''Original Cost Function: cost = (-1/m)*np.sum((Y*np.log(A))+(1-Y)*np.log(1-A))'''
     '''Adding a small value for epsilon to avoid underflow of values for log(A) i.e to avoid log(0)'''
+    
     cost = (-1 / m) * np.sum((y * np.log(A + epsilon)) + (1 - y) * np.log(1 - A + epsilon))
+    
 
 
     '''Backpropogation'''
