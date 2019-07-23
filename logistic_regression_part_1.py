@@ -35,6 +35,8 @@ for i in range(len(directories)):
             image_pil_format = (Image.open(directories[i] + str(counter) + ".jpg")).resize((256, 256))
             image_array = np.array(image_pil_format)
             if image_array.shape != (256, 256, 3):
+                '''If image is not of RGB , i.e if image is grayscale , then it contains only 1 channel , so to 
+                make it to a RGB format , add 2 blank channels of zeros behind the current channel'''
                 zero = np.zeros((256, 256))
                 image_array = np.dstack([image_array, zero, zero])
 
